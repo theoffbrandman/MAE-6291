@@ -1,0 +1,16 @@
+sudo apt-get update && sudo apt-get upgrade
+pip install --upgrade pip
+which python # Tells you where the file root is located
+source venv/bin/activate
+cd Desktop/spring2025_codes/LED_examples
+sudo apt autoremove
+cat /etc/os-release # prints out concatenated file contents
+git clone https://github.com/gwu-mae6291-iot/spring2025_codes.git # or use git pull
+docker --version # use --version to determine version of any package/application
+python3 -m pip install --upgrade pip
+python LED_1.py
+# Ctrl + C to stop execution
+clear # clears terminal to a clean window
+chmod u+x run_on_boot.sh # makes the current user able to execute the file
+crontab -e # edits cron, which schedules tasks, can be used to run files on startup
+sudo # super user do, run as admin
