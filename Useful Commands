@@ -5,7 +5,12 @@ source venv/bin/activate
 cd Desktop/spring2025_codes/LED_examples
 sudo apt autoremove
 cat /etc/os-release # prints out concatenated file contents
-git clone https://github.com/gwu-mae6291-iot/spring2025_codes.git # or use git pull
+
+## TO UPDATE GIT:
+cd Desktop/spring2025_codes
+git pull https://github.com/gwu-mae6291-iot/spring2025_codes.git
+# or use git clone to get a fresh version
+
 docker --version # use --version to determine version of any package/application
 python3 -m pip install --upgrade pip
 python LED_1.py
@@ -14,3 +19,40 @@ clear # clears terminal to a clean window
 chmod u+x run_on_boot.sh # makes the current user able to execute the file
 crontab -e # edits cron, which schedules tasks, can be used to run files on startup
 sudo # super user do, run as admin
+
+Mosquitto:
+sudo /etc/init.d/mosquitto restart
+sudo nano /etc/mosquitto/mosquitto.conf
+ifconfig -a
+hostname -I
+mosquitto_sub -d -t testTopaz
+mosquitto_pub -d -t testTopaz -m "Hello fiffy."
+mosquitto_sub -v -t '#' -h 10.198.26.253
+
+Fuckery:
+ssh pi@10.8.10.203 'sudo systemctl reboot'
+syntax: ssh username@IP '\\COMMAND HERE'
+Then, password prompt. Enter, and complete.
+(Miya's IP on 4/2/25: 10.8.10.203)
+(Bulusu's IP on 4/2/25: 10.198.26.253)
+(Ben's IP on 4/2/25: 10.198.24.133)
+(Eliot's IP on 4/2/25: 10.198.27.181)
+
+Get an image:
+curl -o output.jpg "https://example.com/image.jpg"
+(GW Logo: https://bulletin.gwu.edu/images/Bulletin_localbrand2024-25.png)
+curl -o output.jpg "https://bulletin.gwu.edu/images/Bulletin_localbrand2024-25.png"
+https://ben.sirota.org/DSC_5193_edit.jpg
+curl -o output.jpg "https://ben.sirota.org/DSC_5193_edit.jpg"
+
+To open the image:
+env DISPLAY=:0 open output.jpg
+Run "who" to determine members. The one with no context is the pi,
+the :0 is the user, the IP context is you, ssh'd in
+
+OR:
+sudo chmod u+r output.jpg
+sudo -u pi DISPLAY=:0 xdg-open output.jpg
+
+Full script to ssh, download, and open image:
+ssh pi@10.8.10.203 'sudo systemctl reboot'
